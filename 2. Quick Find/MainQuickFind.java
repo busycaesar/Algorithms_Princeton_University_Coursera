@@ -1,4 +1,4 @@
-public class MainQuickUnion {
+public class MainQuickFind {
     public static void main(String[] args) {
         QuickFindUF uf = new QuickFindUF(10);
         uf.union(4, 3);
