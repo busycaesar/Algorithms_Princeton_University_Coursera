@@ -14,7 +14,7 @@ public class LinkedQueueOfStrings {
     // Member Functions
 
     // This is the method to find if the queue is empty.
-    public boolean isEmpty() { return first == null; }
+    public boolean isEmpty() { return front == null; }
 
     // This is the method to add an item at the back of the queue.
     public void enqueue(String item)
@@ -30,8 +30,8 @@ public class LinkedQueueOfStrings {
         last.item = item;
         last.next = null;
 
-        // If the list is empty, the new last is also the first node in the queue, else pointing the old last to the new last node in the queue.
-        if (isEmpty()) first = last;
+        // If the list is empty, the new last is also the front node in the queue, else pointing the old last to the new last node in the queue.
+        if (isEmpty()) front = last;
         else current_last.next = last;
 
     }
