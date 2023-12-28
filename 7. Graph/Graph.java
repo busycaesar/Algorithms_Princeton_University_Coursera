@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Graph {
     
     // Data Members
@@ -6,7 +10,7 @@ public class Graph {
     private final int total_vertices;
 
     // This is a bag of integers which keeps track of all the adjacent vertices of all the vertices in the graph.
-    private Bag<Integer>[] adjacent_vertices;
+    private List<List<Integer>> adjacent_vertices;
 
     // Methods
 
@@ -16,8 +20,8 @@ public class Graph {
 
         this.total_vertices = vertices_required;
         // Constructs the Bags of integers equals to the number of vertices required.
-        adjacent_vertices = (Bag<Integer>) new Bag[v];
-        for(int i=0; i < v; i++) adjacent_vertices[i] = new Bag<Integer>();
+        adjacent_vertices = new ArrayList<>(this.total_vertices);
+        for(int i=0; i < this.total_vertices; i++) adjacent_vertices.add(new LinkedList<>());
 
     }
 
@@ -25,12 +29,12 @@ public class Graph {
     public void addEdge(int vertice1, int vertice2)
     {
 
-        adjacent_vertices[vertice1].add(vertice2);
-        adjacent_vertices[vertice2].add(vertice1);
+        adjacent_vertices.get(vertice1).add(vertice2);
+        adjacent_vertices.get(vertice2).add(vertice1);
 
     }
 
     // This returns all the adjacent vertices of a given vertex in an iterable form.
-    public Iterable<Integer> adjacent_vertices(int v){ return adjacent_vertices[v]; }
+    public Iterable<Integer> adjacent_vertices(int vertice){ return adjacent_vertices.get(vertice); }
 
 }
